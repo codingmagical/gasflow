@@ -1,20 +1,26 @@
 # gaspy
 A python library for calculating natural gas properties and gas pipeline simulation
-# 简单案例
-import scienceplots
-import matplotlib.pyplot as plt
-from gasflow.gas_pipe import GasPipe
+ 
+# 1.计算气体物理性质
+
+```
 from gasflow.state_equation import BWRSCalculator
 
-# 1.计算气体物理性质
 components = {"CH4": 1}
 calculator = BWRSCalculator(components, 101325, 273.15)
 density, Z = calculator.compute_density()  # 密度，kg/m3 压缩因子
 print(density)
 cp = calculator.compute_heat_capacity()  # 定压比热容， J/kg.K
 print(cp)
+```
 
 # 2.简单输气管道仿真
+
+```
+import scienceplots
+import matplotlib.pyplot as plt
+from gasflow.gas_pipe import GasPipe
+
 params = {
     "gas": {"CH4": 0.995, "C2H6": 0.005},  # 气体组分
     "Q": 34.8e8 / 350 / 24 / 3600,  # 标况下流量m3/s
@@ -47,3 +53,5 @@ with plt.style.context(['science', 'ieee', 'no-latex']):
     ax2.legend(lines + lines2, labels + labels2, loc='upper right')
     plt.savefig("fig1.png", dpi=300)
     plt.show()
+
+```
