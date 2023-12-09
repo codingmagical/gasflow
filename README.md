@@ -1,4 +1,4 @@
-# gaspy
+# gasflow
 A python library for calculating natural gas properties and gas pipeline simulation
  
 # 1.计算气体物理性质
